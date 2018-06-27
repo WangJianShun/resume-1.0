@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h5>你的账户余额是</h5>
+  <span id="amount">&&&amount&&&</span>
+  <button id="button">付款</button>
+</body>
+<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+  button.addEventListener('click', (e) => {
+    $.ajax({
+      dataType: "jsonp",
+      url: "http://jack.com:8002/pay",
+      success: function (response) {
+        if(response==='success'){
+          amount.innerText=amount.innerText-1
+        }
+      }
+    })
+  })
+
+  /*button.addEventListener('click', (e) => {
+    
+    let script = document.createElement('script')
+    let functionName = '随机变量' + parseInt(Math.random() * 10000, 10)//生成一个随机数
+
+    window[functionName] = function (result) {
+      if (result === 'success') {
+        amount.innerText = amount.innerText - 1
+        alert(`${result}`)
+      } else {
+      }
+    }//服务器会调用这个函数并执行里面的操作。
+    script.src = 'http://jack.com:8002/pay?callback=' + functionName
+    document.body.appendChild(script)
+    script.onload = function (e) {
+      e.currentTarget.remove()
+    }    //script标签完成响应随即删除
+  }) */
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,410 @@
+body{
+  background-color: #efefef;
+  margin:0;
+}
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+*{
+  margin:0;
+  padding:0;
+}
+
+ a{
+   text-decoration: none;color:inherit;
+}
+h1,h2,h3{
+font-weight: normal;
+
+}
+ul,li{list-style:none;}
+hr{
+  margin:0;
+  border:none;
+  border-top:1px solid #dedede;
+}
+
+
+[data-x].offset{
+transform:translateY(100px);
+
+}
+[data-x]{
+  transition:all .5s;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.site-welcome {
+  display: none;
+
+}
+
+.site-welcome.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  z-index: 3;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.loading {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.loading::before,
+.loading::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  background: #747474;
+  animation: s 1.6s infinite linear;
+}
+
+.loading::after {
+  animation-delay: .7s;
+  /*延迟0.7秒*/
+}
+
+@keyframes s {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 1;
+  }
+  100% {
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+  }
+}
+
+.topNavBar{
+  padding:20px 0px 20px 0px;
+  position:fixed;
+  top:0;left:0; 
+  width:100%;
+  transition: all .6s; /*动画速度降低到0.6秒*/
+  z-index:3;
+  color:#cbcacb;
+  }
+  .topNavBar.sticky{
+    background: white;
+    padding:10px 0px;
+    box-shadow: 0px 3px 14px -1px rgba(0,0,0,0.75);
+    color:#3d4451;
+  }
+  .topNavBar-inner{
+    padding:0 16px;
+  }
+.topNavBar nav{
+  padding-top:3px;
+  padding-bottom:5px;
+}
+.topNavBar nav> ul{
+  margin: 0; padding:0; list-style: none; height:32px;
+}
+.topNavBar nav>ul>li{
+  float:left;
+  margin-left:17px; 
+  margin-right:17px;
+  position: relative;
+  }
+.topNavBar nav>ul>li>a{
+  position:relative;
+  color:inherit;
+  font-size:12px;
+  font-weight: bold;
+  border-top:3px solid transparent;
+  border-bottom: 3px solid transparent;
+  padding-top:7px;
+  padding-bottom: 7px; 
+  display: block; 
+}
+.topNavBar nav>ul>li.active> a::after,
+.topNavBar nav>ul>li.highlight> a::after{
+  content:'';
+  display:block;
+  position:absolute;
+  top:100%;/*这里用top100%，而不是用bottom:0;因为会报错*/
+  width:100%;
+  left:0;
+  height:3px;
+  background: #e06567;
+  animation:menuside .5s;
+}
+.topNavBar .subemenu{
+  display:none;
+  position:absolute;
+  right:0;
+  top:100%;
+  color: #3d4451;
+  background: white;
+  padding:5px 10px;
+  animation:submenuSlide .3s;
+  box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.75);
+  cursor: pointer;
+}
+.topNavBar li.active>.subemenu{
+  display:block;
+}
+@keyframes submenuSlide{
+  0%{margin-right:100%}
+  100%{margin-right:0%}
+}
+.topNavBar .subemenu li{
+  white-space:nowrap;
+}
+
+@keyframes menuside{
+  0%{width:0%}
+  100%{width:100%}
+}/*hover之后出现线条*/
+.topNavBar .logo{
+  font-size: 24px; font-family: 'Arial Black';
+  padding-top: 4px;
+  padding-bottom:3px;
+
+}
+.topNavBar .logo .rs{
+  margin:3px;
+  color:#e6686a;
+}
+.topNavBar .logo .card{
+  color:#9a9da2;
+}
+.banner{
+  margin-bottom:-360px;
+  height:515px; background-image: url(./image/CABJ.png);
+  background-position:center center;
+  background-size: cover;
+}
+.banner .mask{
+  height:515px;
+  background:rgba(123, 112, 189, 0.089);
+}
+.usercard{
+  max-width: 940px;
+  margin-right: auto;
+  margin-left: auto;
+  background: #f3f4ee;
+  box-shadow: 0px 2px 6px 0px rgba(77,77,77,0.71);
+}
+
+.usercard  .welcome{
+  background-color: #e6686a;
+  color:white;
+  display:inline-block;
+  padding:4px 16px;
+  line-height:22px;
+  position:relative;
+  
+}
+.usercard .welcome .triangle{
+  display:block;
+  border:10px solid transparent;
+  width:0px;height:0px;
+  border-left-color:#e6686a;   
+  border-top-width:0px;
+  position:absolute;
+  top:100%;
+  left:4px;
+}
+.usercard .picture{
+  float: left;
+}
+.usercard .picture img:hover{
+  box-shadow: 0px 5px 12px 3px rgba(77,77,77,0.70);
+  transition: box-shadow 0.28s;
+}
+.usercard .text{
+  float: left;
+  padding-left:65px;
+  width:470px;
+}
+.usercard .text h1{
+  margin-top: 36px;
+}
+.usercard .text hr{
+  margin:20px 0px;
+}
+.usercard .pictureAndText{
+  
+  padding:50px 50px;
+}
+.usercard dl dt{
+  float:left;
+  width:30%;
+  padding:5px 0;
+  font-weight: bold;
+}
+.usercard dl dd{
+  float:left;
+  width:70%;
+  padding: 5px 0;
+  color:#9da0a7;
+}
+.usercard > footer.media{
+  background: #e6686a;
+  text-align: center;
+}
+.usercard > footer.media a{
+  border-radius: 50%;
+  display:inline-block;
+  line-height:30px;
+  width:40px;
+  padding:5px 0;
+  margin: 16px 16px;
+}
+.usercard > footer.media a:hover{
+  background: #d05c60;
+}
+.usercard svg{
+  width: 30px;
+  height: 30px;
+  fill: white;
+  vertical-align: top;
+}
+.downladResume-wrapper{
+ text-align:center;
+}
+.downloadResume{
+border:1px solid #ccced0; 
+border-radius:2px;
+  font-size: 14px;
+  padding:21px 55px;
+  line-height: 16px;
+  display:inline-block;
+  background: #efefef;
+  color:#3d4451;
+  font-weight: bold;
+  margin:34px;
+}
+.downloadResume:hover{
+  box-shadow: 0px 3px 7px 1px rgba(77,77,77,0.70);
+  transition: box-shadow 0.28s;
+}
+.self-introduction{
+max-width: 940px;
+margin-right: auto;
+margin-left: auto;
+text-align:center;
+font-size:20px;
+font-family: cursive;
+line-height: 2;
+}
+section.portfolio,
+section.skill{
+  max-width:940px;
+  margin-left:auto;
+  margin-right: auto; 
+}
+
+section.skill h2,
+.portfolio h2,
+.message>h2    
+{
+  text-align: center;
+  font-size: 34px;
+    line-height: 1.2;
+    font-weight: 600;
+    padding:30px 0;
+}
+section.skill ol{
+  background:white;
+  list-style:none;
+  padding:42px 50px 10px;
+}
+section.skill ol:hover{
+  box-shadow: 0px 3px 7px 1px rgba(77,77,77,0.70);
+  transition: box-shadow 0.28s;
+}
+section.skill li{
+  float:left;
+  width:48%;
+  box-sizing: border-box;
+ 
+}
+section.skill li:nth-child(even){
+  float:right;
+}
+section.skill .progressbar{
+  height:5px;
+  background: #fae1e1;
+  border-radius: 3px;
+  margin:4px 0 40px;
+  overflow:hidden;
+}
+section.skill .progressbar .progress{
+  background: #e8676b;
+  height:100%;
+  width:70%;
+  border-radius: 3px;
+  transform:translateX(0);
+  transition:all 1s;
+}
+section.skill.offset .progressbar .progress{
+  transform:translateX(-100%);
+}
+section.skill li h3{
+  font-size: 14px;
+  line-height: 1.1;
+  padding-right: 40px;
+}
+section.portfolio{
+  text-align: center;
+  margin-bottom:100px;
+  position: relative;
+  
+}
+section.portfolio .swiper-container {
+  width: 668px;
+  height:501px;
+}
+section .swiper-button-prev,
+section .swiper-button-next{
+  background-color: white;
+  width:64px;
+  height: 64px;
+  margin-top:0;
+  border-radius:50%;
+  outline:none;
+  z-index: 2;
+}
+section #messageList{
+  width:700px;
+  margin:0 auto;
+}
+#messageList >li{
+ border-top:1px solid #ddd;
+ border-bottom:1px solid #ddd ;
+ padding:10px 0;
+}
+
+section.portfolio .swiper-container{
+  
+  border-radius:3px;
+}
